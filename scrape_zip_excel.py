@@ -140,7 +140,7 @@ def scrape_zips(zips):
 	wr = csv.writer(stored_file)
 	wr.writerows(csv_output)
     #append this scrape to the master database
-    with open('core.csv','a') as core_file:
+    with open('datafile.csv','a') as core_file:
 	wrC = csv.writer(core_file)
 	wrC.writerows(csv_output)
     #duration_time = (time.time() - start_time())
