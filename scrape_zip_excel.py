@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import lxml
+import html5lib
 import csv
 import time
 import os
@@ -102,7 +102,7 @@ def scrape_zips(zips):
     file_name = zips[-1]
     for z in zips:
         base_page = 'http://www.trulia.com/for_rent/'+str(z)+'_zip/'
-        soup = bs(requests.get(base_page).text,'lxml')
+        soup = bs(requests.get(base_page).text,'html5lib')
         #create list of pages to scrape
         pages = [base_page]
         #create soup of area to look for number of pages
@@ -121,7 +121,7 @@ def scrape_zips(zips):
         #pageinate through all of the pages and append each listing to the CSV file
         print("--- %s seconds ---" % (time.time() - start_time))
         for page in pages:
-            soup = bs(requests.get(page).text,'lxml')
+            soup = bs(requests.get(page).text,'html5lib')
             mylist = soup.find_all(class_='property-data-elem')
             #if my list is zero, break!!!!!!!!!!!!!!
             listing_comp +=30
