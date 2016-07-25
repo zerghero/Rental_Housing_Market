@@ -48,9 +48,9 @@ class Property():
 		       
 	def output(self):
 		if self.type == 'single':
-			return [[self.latitude,self.longitude,writeNone(self.fullAddress),writeNone(self.zip), writeNone(self.price),writeNone(self.bedrooms),writeNone(self.bathrooms),writeNone(self.sqft), (time.strftime("%d/%m/%Y"))]]
+			return [[self.latitude,self.longitude,writeNone(self.fullAddress),writeNone(self.zip), writeNone(self.price),writeNone(self.bedrooms),writeNone(self.bathrooms),writeNone(self.sqft), (time.strftime("%m/%d/%Y"))]]
 		else:
-			return [([self.latitude,self.longitude,writeNone(self.fullAddress),writeNone(self.zip), writeNone(apt.price), writeNone(apt.roomType), writeNone(apt.bathrooms),writeNone(apt.sqft), (time.strftime("%d/%m/%Y"))]) for apt in self.units]
+			return [([self.latitude,self.longitude,writeNone(self.fullAddress),writeNone(self.zip), writeNone(apt.price), writeNone(apt.roomType), writeNone(apt.bathrooms),writeNone(apt.sqft), (time.strftime("%m/%d/%Y"))]) for apt in self.units]
             
 class Apartment():
 	def __init__(self,xml):
