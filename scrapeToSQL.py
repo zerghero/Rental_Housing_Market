@@ -6,6 +6,7 @@ import sqlite3
 
 import requests
 from bs4 import BeautifulSoup as bs
+import html5lib
 import csv
 import time
 import os
@@ -135,7 +136,7 @@ def scrape_zips(zips):
     #### figure out how many pages for each zip code and make a list of all the pages ###
     for z in zips:
         base_page = 'http://www.trulia.com/for_rent/'+str(z)+'_zip/'
-        soup = bs(requests.get(base_page).text,'lxml')
+        soup = bs(requests.get(base_page).text,'html5lib')
         #create list of pages to scrape
         pages = [base_page]
         #create soup of area to look for number of pages
@@ -156,7 +157,7 @@ def scrape_zips(zips):
     print('total pages to scrape: ' + str(len(all_pages)))
     time.sleep(2)
     for page in all_pages:
-        soup = bs(requests.get(page).text,'lxml')
+        soup = bs(requests.get(page).text,'html5lib')
         mylist = soup.find_all(class_='property-data-elem')
         ##### add listings for each page to the database ###
         for listing in mylist:
